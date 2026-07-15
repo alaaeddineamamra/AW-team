@@ -1,0 +1,1062 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AW Team | Professional Full Stack Team</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07090d;
+      color: #f7f9fc;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: 0.9s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      background: rgba(7, 9, 13, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      animation: logoPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 rgba(63, 225, 205, 0);
+      }
+      50% {
+        box-shadow: 0 0 28px rgba(63, 225, 205, 0.38);
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      color: #b8c2d1;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #3fe1cd;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: grid;
+      align-items: center;
+      padding: 130px 0 76px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 16% 18%, rgba(63, 225, 205, 0.16), transparent 32%),
+        radial-gradient(circle at 86% 30%, rgba(255, 184, 77, 0.14), transparent 30%),
+        linear-gradient(135deg, #07090d 0%, #101722 48%, #050609 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+      animation: gridMove 18s linear infinite;
+    }
+
+    @keyframes gridMove {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(56px);
+      }
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 44vw;
+      height: 44vw;
+      right: -14vw;
+      top: 18vh;
+      border: 1px solid rgba(63, 225, 205, 0.18);
+      border-radius: 50%;
+      animation: rotateRing 22s linear infinite;
+    }
+
+    @keyframes rotateRing {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 58px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: #3fe1cd;
+      font-size: 0.88rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 40px;
+      height: 2px;
+      background: #3fe1cd;
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 8vw, 7.4rem);
+      line-height: 0.9;
+      letter-spacing: 0;
+      margin-bottom: 26px;
+      animation: fadeUp 0.9s ease 0.12s both;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #3fe1cd, #ffb84d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 220%;
+      animation: textShine 5s ease-in-out infinite;
+    }
+
+    @keyframes textShine {
+      0%, 100% {
+        background-position: 0% center;
+      }
+      50% {
+        background-position: 100% center;
+      }
+    }
+
+    .hero p {
+      max-width: 670px;
+      color: #c6cfdd;
+      font-size: 1.08rem;
+      margin-bottom: 34px;
+      animation: fadeUp 0.9s ease 0.24s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeUp 0.9s ease 0.36s both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 25px;
+      border-radius: 6px;
+      font-weight: 900;
+      overflow: hidden;
+      transition: 0.28s ease;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      transform: translateX(-105%);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transition: 0.5s ease;
+    }
+
+    .btn:hover::before {
+      transform: translateX(105%);
+    }
+
+    .btn-primary {
+      background: #f7f9fc;
+      color: #07090d;
+    }
+
+    .btn-primary:hover {
+      background: #3fe1cd;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: #f7f9fc;
+    }
+
+    .btn-outline:hover {
+      border-color: #3fe1cd;
+      color: #3fe1cd;
+      transform: translateY(-3px);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      place-items: center;
+      animation: floatIn 1.1s ease 0.2s both;
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateX(34px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    .logo-frame {
+      position: relative;
+      width: min(440px, 100%);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 34px 95px rgba(0, 0, 0, 0.5);
+      animation: floatLogo 6s ease-in-out infinite;
+    }
+
+    @keyframes floatLogo {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-16px);
+      }
+    }
+
+    .logo-frame::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: conic-gradient(from 180deg, transparent, #3fe1cd, transparent, #ffb84d, transparent);
+      animation: spinBorder 6s linear infinite;
+    }
+
+    .logo-frame::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      background: #000000;
+      border-radius: 7px;
+    }
+
+    @keyframes spinBorder {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .logo-frame img {
+      position: relative;
+      z-index: 1;
+      width: 82%;
+      height: 82%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.12));
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 3;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: rgba(17, 24, 34, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+      animation: cardFloat 5s ease-in-out infinite;
+    }
+
+    .floating-card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    .floating-card span {
+      color: #aeb8c7;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .card-one {
+      left: 0;
+      top: 12%;
+    }
+
+    .card-two {
+      right: 0;
+      bottom: 10%;
+      animation-delay: 1.1s;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    section {
+      padding: 98px 0;
+    }
+
+    .section-head {
+      max-width: 740px;
+      margin-bottom: 46px;
+    }
+
+    .section-head span {
+      color: #ffb84d;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.86rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.1rem, 4vw, 3.25rem);
+      margin-top: 10px;
+      line-height: 1.1;
+    }
+
+    .section-head p {
+      color: #aeb8c7;
+      margin-top: 14px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .member-card {
+      position: relative;
+      background: #111822;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: 0.35s ease;
+    }
+
+    .member-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(63, 225, 205, 0.12), transparent 42%);
+      opacity: 0;
+      transition: 0.35s ease;
+      pointer-events: none;
+    }
+
+    .member-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(63, 225, 205, 0.55);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.26);
+    }
+
+    .member-card:hover::before {
+      opacity: 1;
+    }
+
+    .member-photo {
+      height: 470px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.65s ease;
+    }
+
+    .member-card:hover .member-photo img {
+      transform: scale(1.055);
+    }
+
+    .member-info {
+      position: relative;
+      z-index: 1;
+      padding: 29px;
+    }
+
+    .member-info h3 {
+      font-size: 1.75rem;
+      margin-bottom: 6px;
+      text-transform: capitalize;
+    }
+
+    .role {
+      color: #3fe1cd;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .details {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: #c6cfdd;
+    }
+
+    .details li {
+      list-style: none;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .details li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #ffb84d;
+      position: absolute;
+      left: 0;
+      top: 11px;
+      border-radius: 50%;
+    }
+
+    .email {
+      display: inline-flex;
+      color: #f7f9fc;
+      font-weight: 900;
+      border-bottom: 1px solid rgba(63, 225, 205, 0.8);
+      word-break: break-word;
+    }
+
+    .stats {
+      background: #f7f9fc;
+      color: #07090d;
+      overflow: hidden;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .stat {
+      padding: 28px;
+      border-left: 3px solid #3fe1cd;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 16px 45px rgba(7, 9, 13, 0.08);
+      transition: 0.28s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-6px);
+      border-left-color: #ffb84d;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2.35rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: #46515f;
+      font-weight: 900;
+    }
+
+    .projects {
+      background:
+        linear-gradient(rgba(14, 18, 24, 0.96), rgba(14, 18, 24, 0.98)),
+        url("team.jpg") center/520px no-repeat;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      min-height: 255px;
+      padding: 29px;
+      background: rgba(18, 25, 35, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 8px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: rgba(255, 184, 77, 0.6);
+      transform: translateY(-7px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.24);
+    }
+
+    .project-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: #aeb8c7;
+    }
+
+    .tag {
+      width: fit-content;
+      margin-top: 24px;
+      padding: 7px 12px;
+      border-radius: 4px;
+      background: rgba(63, 225, 205, 0.12);
+      color: #3fe1cd;
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+
+    .companies {
+      background: #07090d;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 22px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      gap: 56px;
+      animation: marqueeMove 22s linear infinite;
+    }
+
+    .marquee span {
+      color: #7f8b9c;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @keyframes marqueeMove {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .contact {
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(63, 225, 205, 0.12), transparent 34%),
+        linear-gradient(180deg, #0e1218, #07090d);
+    }
+
+    .contact h2 {
+      font-size: clamp(2.25rem, 5vw, 4.8rem);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .contact p {
+      color: #c6cfdd;
+      max-width: 650px;
+      margin: 0 auto 31px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: #050609;
+      color: #8f9aaa;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .team-grid,
+      .stats-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-visual {
+        max-width: 520px;
+        margin: auto;
+      }
+
+      .member-photo {
+        height: 430px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      nav {
+        height: 68px;
+      }
+
+      .brand span {
+        font-size: 0.98rem;
+      }
+
+      .hero {
+        padding-top: 104px;
+      }
+
+      .floating-card {
+        display: none;
+      }
+
+      .member-photo {
+        height: 360px;
+      }
+
+      .member-info {
+        padding: 22px;
+      }
+
+      section {
+        padding: 74px 0;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .email {
+        font-size: 0.92rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a href="#" class="brand">
+        <img src="team.jpg" alt="AW Team Logo" />
+        <span>AW Team</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#team">Team</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#companies">Companies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Professional Full Stack Team</span>
+          <h1>AW <span class="gradient-text">Team</span></h1>
+          <p>
+            An Algerian development team building modern, reliable, and
+            high-performance digital products. We have delivered more than
+            20 websites and collaborated with international companies on
+            professional full stack solutions.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#team" class="btn btn-primary">Meet The Team</a>
+            <a href="#projects" class="btn btn-outline">View Our Work</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="floating-card card-one">
+            <strong>20+</strong>
+            <span>Websites Delivered</span>
+          </div>
+
+          <div class="logo-frame">
+            <img src="team.jpg" alt="AW Team Symbol" />
+          </div>
+
+          <div class="floating-card card-two">
+            <strong>Global</strong>
+            <span>Company Experience</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <div class="section-head reveal">
+          <span>Our Members</span>
+          <h2>Two developers, one professional vision.</h2>
+          <p>
+            We combine engineering, design thinking, and real project experience
+            to create complete web solutions from concept to launch.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <article class="member-card reveal">
+            <div class="member-photo">
+              <img src="alaeddine.jpg" alt="Amamra Ala Eddine" />
+            </div>
+
+            <div class="member-info">
+              <h3>Amamra Ala Eddine</h3>
+              <div class="role">Full Stack Developer</div>
+
+              <ul class="details">
+                <li>21 years old</li>
+                <li>Algerian nationality</li>
+                <li>Student at Farhat Abbas University</li>
+                <li>Computer Science</li>
+                <li>+5 years experience in full stack development</li>
+              </ul>
+
+              <a class="email" href="mailto:alaaalaaamamra102@gmail.com">
+                alaaalaaamamra102@gmail.com
+              </a>
+            </div>
+          </article>
+
+          <article class="member-card reveal">
+            <div class="member-photo">
+              <img src="chouaib_ha.jpg" alt="Chouaib Hamdi" />
+            </div>
+
+            <div class="member-info">
+              <h3>Chouaib Hamdi</h3>
+              <div class="role">Full Stack Developer</div>
+
+              <ul class="details">
+                <li>19 years old</li>
+                <li>Algerian nationality</li>
+                <li>Student at Farhat Abbas University</li>
+                <li>Computer Science</li>
+                <li>+5 years experience in full stack development</li>
+              </ul>
+
+              <a class="email" href="mailto:chouaibha88@gmail.com">
+                chouaibha88@gmail.com
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <strong>2</strong>
+          <span>Team Members</span>
+        </div>
+
+        <div class="stat reveal">
+          <strong>20+</strong>
+          <span>Completed Websites</span>
+        </div>
+
+        <div class="stat reveal">
+          <strong>5+</strong>
+          <span>Years Experience</span>
+        </div>
+
+        <div class="stat reveal">
+          <strong>Global</strong>
+          <span>Company Collaboration</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span>Our Projects Together</span>
+          <h2>More than 20 websites built with professional standards.</h2>
+          <p>
+            Our work includes business websites, custom platforms, dashboards,
+            landing pages, and full stack systems for serious digital projects.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <div>
+              <h3>Business Websites</h3>
+              <p>
+                Modern, responsive, and professional websites for companies,
+                services, teams, and strong online identities.
+              </p>
+            </div>
+            <span class="tag">20+ Projects</span>
+          </article>
+
+          <article class="project-card reveal">
+            <div>
+              <h3>Full Stack Platforms</h3>
+              <p>
+                Complete applications with frontend interfaces, backend logic,
+                databases, dashboards, authentication, and APIs.
+              </p>
+            </div>
+            <span class="tag">Development</span>
+          </article>
+
+          <article class="project-card reveal">
+            <div>
+              <h3>International Work</h3>
+              <p>
+                Professional collaborations with global companies, focused on
+                quality, performance, and reliable delivery.
+              </p>
+            </div>
+            <span class="tag">Global Clients</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="companies" class="companies">
+      <div class="container">
+        <div class="section-head reveal">
+          <span>Global Experience</span>
+          <h2>Trusted for modern web work.</h2>
+          <p>
+            We have worked with international companies and delivered digital
+            products that combine clean interfaces with strong technical
+            structure.
+          </p>
+        </div>
+      </div>
+
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>Global Companies</span>
+          <span>Professional Websites</span>
+          <span>Full Stack Systems</span>
+          <span>Modern UI</span>
+          <span>Reliable Delivery</span>
+          <span>20+ Projects</span>
+
+          <span>Global Companies</span>
+          <span>Professional Websites</span>
+          <span>Full Stack Systems</span>
+          <span>Modern UI</span>
+          <span>Reliable Delivery</span>
+          <span>20+ Projects</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container reveal">
+        <h2>Let’s Build Something Strong.</h2>
+        <p>
+          AW Team is ready to create modern, elegant, and powerful full stack
+          solutions for professional digital projects.
+        </p>
+
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:alaaalaaamamra102@gmail.com">
+            Contact Ala Eddine
+          </a>
+          <a class="btn btn-outline" href="mailto:chouaibha88@gmail.com">
+            Contact Chouaib
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 AW Team. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealOnScroll = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      {
+        threshold: 0.16
+      }
+    );
+
+    revealElements.forEach((element) => {
+      revealOnScroll.observe(element);
+    });
+  </script>
+</body>
+</html>
+```
